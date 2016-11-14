@@ -13,7 +13,7 @@ angular.module('stockDogApp')
       templateUrl: 'views/templates/watchlist-panel.html',
       restrict: 'E',
       scope: {},
-      link: function postLink($scope) {
+      link: function ($scope) {
         // [2] Initialize variables
         $scope.watchlist = {};
         var addListModal = $modal({
