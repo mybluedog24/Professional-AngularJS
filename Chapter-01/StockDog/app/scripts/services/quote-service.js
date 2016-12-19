@@ -23,6 +23,7 @@ angular.module('stockDogApp')
           stock.percentChange = quote.ChangeinPercent;
           stock.marketValue = stock.shares * stock.lastPrice;
           stock.dayChange = stock.shares * parseFloat(stock.change);
+          stock.save();
         });
       }
     };
@@ -42,6 +43,10 @@ angular.module('stockDogApp')
     this.fetch = function () {
       var symbols = _.reduce(stocks, function (symbols, stock) {
         symbols.push(stock.company.symbol);
+        console.log(stock.shares);
+        console.log(stock.marketValue);
+        console.log(stock.dayChange);
+
         return symbols;
       }, []);
       var query = encodeURIComponent('select * from yahoo.finance.quotes ' + 'where symbol in (\'' + symbols.join(',') + '\')');
